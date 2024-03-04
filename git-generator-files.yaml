@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: guestbook
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - git:
+      repoURL: https://github.com/askulkarni2/datascience-repo
+      revision: HEAD
+      files:
+      - path: "experiments/**/config.json"
+  template:
+    metadata:
+      name: '{{.path.basename}}-apps'
+    spec:
+      project: default
+      sources:
+        - repoURL: https://github.com/askulkarni2/datascience-repo
+          targetRevision: HEAD
+          path: "apps/ray-cluster"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{.path.basename}}'
+      # Sync policy
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - CreateNamespace=true
+        - ApplyOutOfSyncOnly=true
+        retry:
+          limit: 1
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 1m
