@@ -20,7 +20,19 @@ spec:
       sources:
         - repoURL: https://github.com/askulkarni2/datascience-repo
           targetRevision: HEAD
+          path: "apps/namespaced-resources"
+          helm:
+            values: |
+              serviceAccountName: '{{.path.basename}}'
+        - repoURL: https://github.com/askulkarni2/datascience-repo
+          targetRevision: HEAD
           path: "apps/ray-cluster"
+          helm:
+            values: |
+              head:
+                serviceAccountName: '{{.path.basename}}'
+              worker:
+                serviceAccountName: '{{.path.basename}}'
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{.path.basename}}'
@@ -32,9 +44,3 @@ spec:
         syncOptions:
         - CreateNamespace=true
         - ApplyOutOfSyncOnly=true
-        retry:
-          limit: 1
-          backoff:
-            duration: 5s
-            factor: 2
-            maxDuration: 1m
