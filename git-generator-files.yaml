@@ -22,19 +22,18 @@ spec:
           targetRevision: HEAD
           path: "apps/namespaced-resources"
           helm:
-            values: |
+            valuesObject:
               serviceAccountName: '{{.path.basename}}'
-              {{- toYaml .Values.awsLoadBalancerController | nindent 10 }}
         - repoURL: https://github.com/askulkarni2/datascience-repo
           targetRevision: HEAD
           path: "apps/ray-cluster"
           helm:
-            values: |
-              head:
-                serviceAccountName: '{{.path.basename}}'
-              worker:
-                serviceAccountName: '{{.path.basename}}'
-              {{- toYaml .Values | nindent 10 }}
+            valuesObject:
+              ray-cluster:
+                head:
+                  serviceAccountName: '{{.path.basename}}'
+                worker:
+                  serviceAccountName: '{{.path.basename}}'
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{.path.basename}}'
