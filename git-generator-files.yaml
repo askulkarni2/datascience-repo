@@ -26,6 +26,9 @@ spec:
               serviceAccountName: '{{.path.basename}}'
         - repoURL: https://github.com/askulkarni2/datascience-repo
           targetRevision: HEAD
+          path: "apps/karpenter-resources"
+        - repoURL: https://github.com/askulkarni2/datascience-repo
+          targetRevision: HEAD
           path: "apps/ray-cluster"
           helm:
             valuesObject:

@@ -1,4 +1,4 @@
-ray-cluster:  
+ray-cluster:
   # Default values for ray-cluster.
   # This is a YAML-formatted file.
   # Declare variables to be passed into your templates.
