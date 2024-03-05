@@ -7,12 +7,12 @@ ec2NodeClass:
   amiFamily: AL2
   amiSelectorTerms:
   subnetSelectorTerms:
-    - tags:
-        karpenter.sh/discovery: scalex-cluster
+  - tags:
+      karpenter.sh/discovery: "scalex-cluster"
   securityGroupSelectorTerms:
-    - tags:
-        karpenter.sh/discovery: scalex-cluster
-  karpenterRole:
+  - tags:
+      karpenter.sh/discovery: "scalex-cluster"
+  karpenterRole: eksctl-KarpenterNodeRole-scalex-cluster
   metadataOptions:
     httpEndpoint: enabled
     httpProtocolIPv6: disabled

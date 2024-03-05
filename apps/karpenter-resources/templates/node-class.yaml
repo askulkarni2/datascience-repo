@@ -10,29 +10,14 @@ spec:
   amiSelectorTerms:
     {{- toYaml .Values.ec2NodeClass.amiSelectorTerms | nindent 4 }}
   {{- end }}
+  {{- with .Values.ec2NodeClass.subnetSelectorTerms }}
   subnetSelectorTerms:
-    {{- if and (.Values.ec2NodeClass.subnetSelectorTerms) (hasKey .Values.ec2NodeClass.subnetSelectorTerms "tags") }}
-    - tags:
-      {{- range $key, $value := .Values.ec2NodeClass.subnetSelectorTerms.tags }}
-        {{ $key }}: {{ $value | quote }}
-      {{- end }}
-    {{- end }}
-    {{- if and (.Values.ec2NodeClass.subnetSelectorTerms.id) (hasKey .Values.ec2NodeClass.subnetSelectorTerms "id") }}
-    - id: {{ .Values.ec2NodeClass.subnetSelectorTerms.id }}
-    {{- end }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with .Values.ec2NodeClass.securityGroupSelectorTerms }}
   securityGroupSelectorTerms:
-    {{- if and (.Values.ec2NodeClass.securityGroupSelectorTerms) (hasKey .Values.ec2NodeClass.securityGroupSelectorTerms "name") }}
-    - name: {{ .Values.ec2NodeClass.securityGroupSelectorTerms.name }}
-    {{- end }}
-    {{- if and (.Values.ec2NodeClass.securityGroupSelectorTerms) (hasKey .Values.ec2NodeClass.securityGroupSelectorTerms "id") }}
-    - id: {{ .Values.ec2NodeClass.securityGroupSelectorTerms.id }}
-    {{- end }}
-    {{- if and (.Values.ec2NodeClass.securityGroupSelectorTerms) (hasKey .Values.ec2NodeClass.securityGroupSelectorTerms "tags") }}
-    - tags:
-      {{- range $key, $value := .Values.ec2NodeClass.securityGroupSelectorTerms.tags }}
-        {{ $key }}: {{ $value | quote }}
-      {{- end }}
-    {{- end }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
   role: {{ .Values.ec2NodeClass.karpenterRole }}
   tags:
     Name: karpenter-{{ .Values.name }}
