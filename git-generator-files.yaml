@@ -24,6 +24,7 @@ spec:
           helm:
             values: |
               serviceAccountName: '{{.path.basename}}'
+              {{- toYaml .Values.awsLoadBalancerController | nindent 10 }}
         - repoURL: https://github.com/askulkarni2/datascience-repo
           targetRevision: HEAD
           path: "apps/ray-cluster"
@@ -33,6 +34,7 @@ spec:
                 serviceAccountName: '{{.path.basename}}'
               worker:
                 serviceAccountName: '{{.path.basename}}'
+              {{- toYaml .Values | nindent 10 }}
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{.path.basename}}'
