@@ -12,7 +12,7 @@ ec2NodeClass:
   securityGroupSelectorTerms:
   - tags:
       karpenter.sh/discovery: "scalex-cluster"
-  karpenterRole: eksctl-KarpenterNodeRole-scalex-cluster
+  karpenterRole: KarpenterNodeRole-scalex-cluster
   metadataOptions:
     httpEndpoint: enabled
     httpProtocolIPv6: disabled
