@@ -1,0 +1,27 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: scalex-cluster
+  region: us-west-2
+  version: '1.29'
+  tags:
+    karpenter.sh/discovery: scalex-cluster # here, it is set to the cluster name
+
+iam:
+  withOIDC: true # required
+
+karpenter:
+  version: '0.35.0'
+
+managedNodeGroups:
+  - name: managed-ng-1
+    minSize: 1
+    maxSize: 2
+    desiredCapacity: 1
+
+addons:
+- name: vpc-cni
+- name: coredns
+- name: kube-proxy
+- name: eks-pod-identity-agent
