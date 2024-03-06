@@ -150,7 +150,11 @@ ray-cluster:
         memory: "1G"
     annotations: {}
     nodeSelector: {}
-    tolerations: []
+    tolerations:
+      - key: "experiment-name"
+        operator: "Equal"
+        value: "all-default"
+        effect: "NoSchedule"
     affinity: {}
     # Ray container security context.
     securityContext: {}
