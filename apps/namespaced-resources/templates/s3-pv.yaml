@@ -15,16 +15,3 @@ spec:
     volumeHandle: s3-csi-driver-volume
     volumeAttributes:
       bucketName: scalex-demo-{{ .Values.namespace }}-bucket
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: {{ .Values.namespace }}
-spec:
-  accessModes:
-    - ReadWriteMany # supported options: ReadWriteMany / ReadOnlyMany
-  storageClassName: "" # required for static provisioning
-  resources:
-    requests:
-      storage: 1200Gi # ignored, required
-  volumeName: {{ .Values.namespace }}
