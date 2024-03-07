@@ -1,0 +1,10 @@
+apiVersion: eks.services.k8s.aws/v1alpha1
+kind: PodIdentityAssociation
+metadata:
+  name: {{ .Values.namespace }}
+  namespace: {{ .Values.namespace }}
+spec:
+  clusterName: {{ .Values.cluterName }}
+  namespace: {{ .Values.namespace }}
+  roleARN: {{ .Values.principalARN }}
+  serviceAccount: {{ .Values.serviceAccountName }}
