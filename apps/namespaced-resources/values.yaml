@@ -1,2 +1,5 @@
-namespaced-resources:
-  serviceAccountName:
+namespace: all-default
+serviceAccountName: all-default
+principalARN: "arn:aws:iam::*:role/data-science-role"
+policyARN: arn:aws:eks::aws:cluster-access-policy/AmazonEKSEditPolicy
+clusterName: scalex-cluster

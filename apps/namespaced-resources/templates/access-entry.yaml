@@ -1,0 +1,14 @@
+apiVersion: eks.services.k8s.aws/v1alpha1
+kind: AccessEntry
+metadata:
+  name: {{ .Values.namespace }}
+  namespace: {{ .Values.namespace }}
+spec:
+  accessPolicies:
+    - accessScope:
+        type: namespace
+        namespaces:
+        - {{ .Values.namespace }}
+      policyARN: arn:aws:eks::aws:cluster-access-policy/AmazonEKSEditPolicy
+  clusterName: {{ .Values.clusterName }}
+  principalARN: {{ .Values.principalARN }}
