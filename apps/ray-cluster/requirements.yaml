@@ -1,4 +1,0 @@
-dependencies:
-- name: ray-cluster
-  version: 1.0.0
-  repository: https://ray-project.github.io/kuberay-helm/
