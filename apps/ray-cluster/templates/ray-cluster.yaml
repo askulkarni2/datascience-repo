@@ -56,7 +56,7 @@ spec:
         volumes:
           - name: persistent-storage
             persistentVolumeClaim:
-            claimName: {{ .Values.namespace }}
+              claimName: {{ .Values.namespace }}
   workerGroupSpecs:
   - replicas: 0
     minReplicas: 0
