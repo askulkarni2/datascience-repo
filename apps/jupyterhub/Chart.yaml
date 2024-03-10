@@ -8,4 +8,4 @@ appVersion: "1.0"
 dependencies:
   - name: juyterhub
     version: 3.2.1
-    repository: https://hub.jupyter.org/helm-chart/
+    repository: https://jupyterhub.github.io/helm-chart/
