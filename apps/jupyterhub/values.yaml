@@ -107,13 +107,7 @@ jupyterhub:
 
   prePuller:
     hook:
-      nodeSelector:
-        NodePool: all-default
-      tolerations:
-        - key: "experiment-name"
-          operator: "Equal"
-          value: all-default
-          effect: "NoSchedule"
+      enabled: false
 
   cull:
     enabled: false
