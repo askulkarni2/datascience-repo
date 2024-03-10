@@ -30,7 +30,7 @@ jupyterhub:
   singleuser:
     startTimeout: 1200
     image:
-      name: quay.io/jupyterhub/k8s-singleuser-sample
+      name: quay.io/jupyter/base-notebook
     cmd: jupyterhub-singleuser
     cpu:
       limit: 2
@@ -72,7 +72,8 @@ jupyterhub:
       replicas: 1
     corePods:
       tolerations:
-        - key: "experiment-name"
+        - key: "experiment-name":pods
+
           operator: "Equal"
           value: all-default
           effect: "NoSchedule"
