@@ -106,7 +106,6 @@ jupyterhub:
           effect: "NoSchedule"
 
   prePuller:
-    extraTolerations:
     hook:
       enabled: false
       nodeSelector:
