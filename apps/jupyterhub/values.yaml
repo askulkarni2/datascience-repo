@@ -29,6 +29,12 @@ jupyterhub:
 
   singleuser:
     startTimeout: 1200
+    cpu:
+      limit: 2
+      guarantee: 1
+    memory:
+      limit: 4G
+      guarantee: 512M
     profileList:
       - display_name: Data Engineering
         description: "PySpark Notebooks"
@@ -53,10 +59,6 @@ jupyterhub:
               operator: "Equal"
               value: all-default
               effect: "NoSchedule"
-          cpu_guarantee: 2
-          mem_guarantee: 8G
-          cpu_limit: 4
-          mem_limit: 8G
         cmd: null
     storage:
       type: "static"
@@ -87,7 +89,7 @@ jupyterhub:
       enabled: true
     userPlaceholder:
       enabled: true
-      replicas: 3
+      replicas: 1
     corePods:
       tolerations:
         - key: "experiment-name"
