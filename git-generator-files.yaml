@@ -27,6 +27,9 @@ spec:
         - repoURL: https://github.com/askulkarni2/datascience-repo
           targetRevision: HEAD
           path: "apps/ray-cluster"
+        - repoURL: https://github.com/askulkarni2/datascience-repo
+          targetRevision: HEAD
+          path: "apps/jupyterhub"
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{.path.basename}}'
