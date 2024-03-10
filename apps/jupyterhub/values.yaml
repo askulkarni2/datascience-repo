@@ -4,6 +4,8 @@ jupyterhub:
       pvc:
         storage: 50Gi
         storageClassName: gp2
+    nodeSelector:
+      NodePool: all-default
     tolerations:
       - key: "experiment-name"
         operator: "Equal"
@@ -17,6 +19,8 @@ jupyterhub:
     service:
       type: ClusterIP
     chp:
+      nodeSelector:
+        NodePool: all-default
       tolerations:
         - key: "experiment-name"
           operator: "Equal"
@@ -70,6 +74,9 @@ jupyterhub:
 prePuller:
   hook:
     enabled: false
+  continuous:
+    enabled: false
+  pullProfileListImages: false
 
 cull:
   enabled: false
