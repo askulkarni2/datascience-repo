@@ -49,7 +49,7 @@ nodePool:
     - key: karpenter.k8s.aws/instance-category
       operator: In
       values: ["c", "m", "r"]
-    - key: karpenter.k8s.aws/instance-generation
+    - key: karpenter.k8s.aws/instance-cpu
       operator: Gt
       values: ["2"]
   disruption:
