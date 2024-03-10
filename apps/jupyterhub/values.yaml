@@ -29,6 +29,9 @@ jupyterhub:
 
   singleuser:
     startTimeout: 1200
+    image:
+      name: quay.io/jupyterhub/k8s-singleuser-sample
+    cmd: jupyterhub-singleuser
     cpu:
       limit: 2
       guarantee: 1
