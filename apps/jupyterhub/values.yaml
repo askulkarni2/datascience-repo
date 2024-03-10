@@ -33,11 +33,9 @@ jupyterhub:
       name: quay.io/jupyter/base-notebook
       tag: latest
     cpu:
-      limit: 1
-      guarantee: 1
+      guarantee: 0.5
     memory:
-      limit: 2G
-      guarantee: 2G
+      guarantee: 512M
     nodeSelector:
         NodePool: all-default
     storage:
