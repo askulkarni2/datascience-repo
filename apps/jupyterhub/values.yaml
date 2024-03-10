@@ -11,6 +11,12 @@ jupyterhub:
       type: offload
     service:
       type: ClusterIP
+    chp:
+      tolerations:
+        - key: "experiment-name"
+          operator: "Equal"
+          value: all-default
+          effect: "NoSchedule"
 
   singleuser:
     startTimeout: 1200
@@ -69,17 +75,17 @@ jupyterhub:
     cmd: null
 
   # Optimizations configured according to this doc https://z2jh.jupyter.org/en/latest/administrator/optimization.html
-  scheduling:
-    userScheduler:
-      enabled: true
-    podPriority:
-      enabled: true
-    userPlaceholder:
-      enabled: false
-      replicas: 1
-    userPods:
-      nodeAffinity:
-        matchNodePurpose: require # This will force single-user pods to use an specific karpenter provisioner
+#  scheduling:
+#    userScheduler:
+#      enabled: true
+#    podPriority:
+#      enabled: true
+#    userPlaceholder:
+#      enabled: false
+#      replicas: 1
+#    userPods:
+#      nodeAffinity:
+#        matchNodePurpose: require # This will force single-user pods to use an specific karpenter provisioner
 
   prePuller:
     hook:
