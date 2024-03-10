@@ -4,6 +4,11 @@ jupyterhub:
       pvc:
         storage: 50Gi
         storageClassName: gp2
+    tolerations:
+      - key: "experiment-name"
+        operator: "Equal"
+        value: all-default
+        effect: "NoSchedule"
 
   proxy:
     https:
@@ -61,38 +66,3 @@ jupyterhub:
         mountPath: /home/data
         readOnly: false
     serviceAccountName: all-default
-    extraPodConfig:
-      securityContext:
-          fsGroup: 100
-    extraEnv:
-      GRANT_SUDO: "yes"
-      NOTEBOOK_ARGS: "--allow-root"
-      CHOWN_HOME: "yes"
-      CHOWN_HOME_OPTS: "-R"
-      CHOWN_EXTRA: "/home/shared"
-    uid: 0
-    fsGid: 0
-    cmd: null
-
-  # Optimizations configured according to this doc https://z2jh.jupyter.org/en/latest/administrator/optimization.html
-#  scheduling:
-#    userScheduler:
-#      enabled: true
-#    podPriority:
-#      enabled: true
-#    userPlaceholder:
-#      enabled: false
-#      replicas: 1
-#    userPods:
-#      nodeAffinity:
-#        matchNodePurpose: require # This will force single-user pods to use an specific karpenter provisioner
-
-  prePuller:
-    hook:
-      enabled: false
-    continuous:
-      # NOTE: if used with Karpenter, also add user-placeholders
-      enabled: false
-
-  global:
-    safeToShowValues: false
