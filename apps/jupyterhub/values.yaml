@@ -35,8 +35,6 @@ jupyterhub:
     memory:
       limit: 4G
       guarantee: 512M
-    image:
-      name: jupyter/minimal-notebook
     nodeSelector:
         NodePool: all-default
     storage:
