@@ -35,31 +35,10 @@ jupyterhub:
     memory:
       limit: 4G
       guarantee: 512M
-    profileList:
-      - display_name: Data Engineering
-        description: "PySpark Notebooks"
-        profile_options:
-          image:
-            display_name: "Image"
-            choices:
-              pyspark350:
-                display_name: "PySpark 3.5.0 + Python 3.11"
-                default: true
-                kubespawner_override:
-                  image: jupyter/pyspark-notebook:spark-3.5.0
-              pyspark341:
-                display_name: "PySpark 3.4.1 + Python 3.11"
-                kubespawner_override:
-                  image: jupyter/pyspark-notebook:spark-3.4.1
-        kubespawner_override:
-          node_selector:
-            NodePool: all-default
-          tolerations:
-            - key: "experiment-name"
-              operator: "Equal"
-              value: all-default
-              effect: "NoSchedule"
-        cmd: null
+    image:
+      name: jupyter/minimal-notebook
+    nodeSelector:
+        NodePool: all-default
     storage:
       type: "static"
       static:
