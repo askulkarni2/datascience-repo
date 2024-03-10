@@ -107,7 +107,6 @@ jupyterhub:
 
   prePuller:
     hook:
-      enabled: false
       nodeSelector:
         NodePool: all-default
       tolerations:
