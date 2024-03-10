@@ -33,11 +33,11 @@ jupyterhub:
       name: quay.io/jupyter/base-notebook
       tag: latest
     cpu:
-      limit: 2
+      limit: 1
       guarantee: 1
     memory:
-      limit: 4G
-      guarantee: 512M
+      limit: 2G
+      guarantee: 2G
     nodeSelector:
         NodePool: all-default
     storage:
@@ -65,11 +65,11 @@ jupyterhub:
           operator: "Equal"
           value: all-default
           effect: "NoSchedule"
-    podPriority:
-      enabled: true
-    userPlaceholder:
-      enabled: true
-      replicas: 1
+    #podPriority:
+    #  enabled: true
+    #userPlaceholder:
+    #  enabled: true
+    #  replicas: 1
     corePods:
       tolerations:
         - key: "experiment-name"
