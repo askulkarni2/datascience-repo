@@ -46,6 +46,8 @@ jupyterhub:
                 kubespawner_override:
                   image: jupyter/pyspark-notebook:spark-3.4.1
         kubespawner_override:
+          node_selector:
+            NodePool: all-default
           tolerations:
             - key: "experiment-name"
               operator: "Equal"
@@ -71,12 +73,49 @@ jupyterhub:
         readOnly: false
     serviceAccountName: all-default
 
-prePuller:
-  hook:
-    enabled: false
-  continuous:
-    enabled: false
-  pullProfileListImages: false
+  scheduling:
+    userScheduler:
+      enabled: true
+      nodeSelector:
+        NodePool: all-default
+      tolerations:
+        - key: "experiment-name"
+          operator: "Equal"
+          value: all-default
+          effect: "NoSchedule"
+    podPriority:
+      enabled: true
+    userPlaceholder:
+      enabled: false
+      replicas: 3
+    corePods:
+      nodeAffinity:
+        matchNodePurpose: require
+      tolerations:
+        - key: "experiment-name"
+          operator: "Equal"
+          value: all-default
+          effect: "NoSchedule"
+    userPods:
+      nodeAffinity:
+        matchNodePurpose: require
+      tolerations:
+        - key: "experiment-name"
+          operator: "Equal"
+          value: all-default
+          effect: "NoSchedule"
 
-cull:
-  enabled: false
+  prePuller:
+    extraTolerations:
+    hook:
+      enabled: false
+      nodeSelector:
+        NodePool: all-default
+      tolerations:
+        - key: "experiment-name"
+          operator: "Equal"
+          value: all-default
+          effect: "NoSchedule"
+
+  cull:
+    enabled: false
