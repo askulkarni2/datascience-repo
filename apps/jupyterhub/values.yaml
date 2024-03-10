@@ -31,6 +31,7 @@ jupyterhub:
     startTimeout: 1200
     image:
       name: quay.io/jupyter/base-notebook
+      tag: latest
     cpu:
       limit: 2
       guarantee: 1
