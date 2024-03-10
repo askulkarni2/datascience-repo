@@ -86,7 +86,7 @@ jupyterhub:
     podPriority:
       enabled: true
     userPlaceholder:
-      enabled: false
+      enabled: true
       replicas: 3
     corePods:
       nodeAffinity:
