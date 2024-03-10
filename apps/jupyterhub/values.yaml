@@ -89,16 +89,12 @@ jupyterhub:
       enabled: true
       replicas: 3
     corePods:
-      nodeAffinity:
-        matchNodePurpose: require
       tolerations:
         - key: "experiment-name"
           operator: "Equal"
           value: all-default
           effect: "NoSchedule"
     userPods:
-      nodeAffinity:
-        matchNodePurpose: require
       tolerations:
         - key: "experiment-name"
           operator: "Equal"
