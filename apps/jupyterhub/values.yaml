@@ -4,13 +4,13 @@ jupyterhub:
       pvc:
         storage: 50Gi
         storageClassName: gp2
-#    nodeSelector:
-#      NodePool: ""
-#    tolerations:
-#      - key: "experiment-name"
-#        operator: "Equal"
-#        value: ""
-#        effect: "NoSchedule"
+    nodeSelector:
+      NodePool: ""
+    tolerations:
+      - key: "experiment-name"
+        operator: "Equal"
+        value: ""
+        effect: "NoSchedule"
 
   proxy:
     https:
@@ -18,14 +18,14 @@ jupyterhub:
       type: offload
     service:
       type: ClusterIP
-#    chp:
-#      nodeSelector:
-#        NodePool: ""
-#      tolerations:
-#        - key: "experiment-name"
-#          operator: "Equal"
-#          value: ""
-#          effect: "NoSchedule"
+    chp:
+      nodeSelector:
+        NodePool: ""
+      tolerations:
+        - key: "experiment-name"
+          operator: "Equal"
+          value: ""
+          effect: "NoSchedule"
 
   singleuser:
     startTimeout: 1200
