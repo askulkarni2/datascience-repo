@@ -38,22 +38,6 @@ spec:
           helm:
             valuesObject:
               jupyterhub:
-                hub:
-                  nodeSelector:
-                    NodePool: '{{.path.basename}}'
-                  tolerations:
-                    - key: "experiment-name"
-                      operator: "Equal"
-                      value: '{{.path.basename}}'
-                      effect: "NoSchedule"
-                proxy:
-                  nodeSelector:
-                    NodePool: '{{.path.basename}}'
-                  tolerations:
-                    - key: "experiment-name"
-                      operator: "Equal"
-                      value: '{{.path.basename}}'
-                      effect: "NoSchedule"
                 singleuser:
                   nodeSelector:
                     NodePool: '{{.path.basename}}'
