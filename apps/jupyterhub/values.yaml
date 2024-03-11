@@ -54,7 +54,7 @@ jupyterhub:
     serviceAccountName: all-default
     allowPrivilegeEscalation: true
     extraPodConfig: # This is needed for Jovyan user running in every single pod, access the Service Account
-    securityContext:
+      securityContext:
         fsGroup: 100
     extraEnv: # Sudo needed to configure the proper permissions to start the notebook instance
       GRANT_SUDO: "yes"
