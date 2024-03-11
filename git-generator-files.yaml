@@ -11,7 +11,7 @@ spec:
       repoURL: https://github.com/askulkarni2/datascience-repo
       revision: HEAD
       files:
-      - path: "experiments/**/config.json"
+      - path: "experiments/**/config.yaml"
   template:
     metadata:
       name: '{{.path.basename}}-apps'
