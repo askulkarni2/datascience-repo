@@ -21,6 +21,11 @@ spec:
         - repoURL: https://github.com/askulkarni2/datascience-repo
           targetRevision: HEAD
           path: "apps/namespaced-resources"
+          helm:
+            valuesObject:
+              namespace: '{{.path.basename}}'
+              serviceAccountName: '{{.path.basename}}'
+              principalARN: '{{.principalARN}}'
         - repoURL: https://github.com/askulkarni2/datascience-repo
           targetRevision: HEAD
           path: "apps/karpenter-resources"
@@ -30,6 +35,59 @@ spec:
         - repoURL: https://github.com/askulkarni2/datascience-repo
           targetRevision: HEAD
           path: "apps/jupyterhub"
+          helm:
+            valuesObject:
+              jupyterhub:
+                hub:
+                  nodeSelector:
+                    NodePool: '{{.path.basename}}'
+                  tolerations:
+                    - key: "experiment-name"
+                      operator: "Equal"
+                      value: '{{.path.basename}}'
+                      effect: "NoSchedule"
+                proxy:
+                  nodeSelector:
+                    NodePool: '{{.path.basename}}'
+                  tolerations:
+                    - key: "experiment-name"
+                      operator: "Equal"
+                      value: '{{.path.basename}}'
+                      effect: "NoSchedule"
+                singleuser:
+                  nodeSelector:
+                    NodePool: '{{.path.basename}}'
+                  storage:
+                    extraVolumes:
+                    - name: jupyterhub-shared
+                      persistentVolumeClaim:
+                        claimName: '{{.path.basename}}'
+                    extraVolumeMounts:
+                    - name: jupyterhub-shared
+                      mountPath: /home/data
+                      readOnly: false
+                  serviceAccountName: '{{.path.basename}}'
+                scheduling:
+                  userScheduler:
+                    nodeSelector:
+                      NodePool: '{{.path.basename}}'
+                    tolerations:
+                      - key: "experiment-name"
+                        operator: "Equal"
+                        value: '{{.path.basename}}'
+                        effect: "NoSchedule"
+                  corePods:
+                    tolerations:
+                      - key: "experiment-name"
+                        operator: "Equal"
+                        value: '{{.path.basename}}'
+                        effect: "NoSchedule"
+                  userPods:
+                    tolerations:
+                      - key: "experiment-name"
+                        operator: "Equal"
+                        value: '{{.path.basename}}'
+                        effect: "NoSchedule"
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{.path.basename}}'
