@@ -25,7 +25,7 @@ spec:
             valuesObject:
               namespace: '{{.path.basename}}'
               serviceAccountName: '{{.path.basename}}'
-              principalARN: '{{.principalARN}}'
+              principalARN: '{{.principal_arn}}'
         - repoURL: https://github.com/askulkarni2/datascience-repo
           targetRevision: HEAD
           path: "apps/karpenter-resources"
