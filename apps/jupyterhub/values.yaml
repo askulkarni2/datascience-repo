@@ -39,10 +39,7 @@ jupyterhub:
     nodeSelector:
         NodePool: all-default
     storage:
-      type: "static"
-      static:
-        pvcName: all-default
-        subPath: "home/{username}"
+      capacity: 100Gi
       extraVolumes:
       - name: jupyterhub-shared
         persistentVolumeClaim:
