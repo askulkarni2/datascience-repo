@@ -64,6 +64,10 @@ jupyterhub:
       CHOWN_EXTRA: "/home/shared"
     uid: 0
     fsGid: 0
+    cloudMetadata:
+      blockWithIptables: false
+    networkPolicy:
+      enabled: true
 
   scheduling:
     userScheduler:
