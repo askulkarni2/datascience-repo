@@ -29,9 +29,15 @@ spec:
         - repoURL: https://github.com/askulkarni2/datascience-repo
           targetRevision: HEAD
           path: "apps/karpenter-resources"
+          helm:
+            valuesObject:
+              name: '{{.path.basename}}'
         - repoURL: https://github.com/askulkarni2/datascience-repo
           targetRevision: HEAD
           path: "apps/ray-cluster"
+          helm:
+            valuesObject:
+              namespace: '{{.path.basename}}'
         - repoURL: https://github.com/askulkarni2/datascience-repo
           targetRevision: HEAD
           path: "apps/jupyterhub"
