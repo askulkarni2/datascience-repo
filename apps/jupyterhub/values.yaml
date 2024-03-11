@@ -5,11 +5,11 @@ jupyterhub:
         storage: 50Gi
         storageClassName: gp2
     nodeSelector:
-      NodePool: all-default
+      NodePool: ""
     tolerations:
       - key: "experiment-name"
         operator: "Equal"
-        value: all-default
+        value: ""
         effect: "NoSchedule"
 
   proxy:
@@ -20,11 +20,11 @@ jupyterhub:
       type: ClusterIP
     chp:
       nodeSelector:
-        NodePool: all-default
+        NodePool: ""
       tolerations:
         - key: "experiment-name"
           operator: "Equal"
-          value: all-default
+          value: ""
           effect: "NoSchedule"
 
   singleuser:
@@ -37,18 +37,18 @@ jupyterhub:
     memory:
       guarantee: 512M
     nodeSelector:
-        NodePool: all-default
+        NodePool: ""
     storage:
       capacity: 100Gi
       extraVolumes:
       - name: jupyterhub-shared
         persistentVolumeClaim:
-          claimName: all-default
+          claimName: ""
       extraVolumeMounts:
       - name: jupyterhub-shared
         mountPath: /home/data
         readOnly: false
-    serviceAccountName: all-default
+    serviceAccountName: ""
     allowPrivilegeEscalation: true
     extraPodConfig: # This is needed for Jovyan user running in every single pod, access the Service Account
       securityContext:
@@ -69,11 +69,11 @@ jupyterhub:
     userScheduler:
       enabled: true
       nodeSelector:
-        NodePool: all-default
+        NodePool: ""
       tolerations:
         - key: "experiment-name"
           operator: "Equal"
-          value: all-default
+          value: ""
           effect: "NoSchedule"
     #podPriority:
     #  enabled: true
@@ -84,13 +84,13 @@ jupyterhub:
       tolerations:
         - key: "experiment-name"
           operator: "Equal"
-          value: all-default
+          value: ""
           effect: "NoSchedule"
     userPods:
       tolerations:
         - key: "experiment-name"
           operator: "Equal"
-          value: all-default
+          value: ""
           effect: "NoSchedule"
 
   prePuller:

@@ -1,5 +1,5 @@
 # Shared values
-name: all-default
+name: ""
 
 # EC2NodeClass specific values
 ec2NodeClass:
@@ -34,7 +34,7 @@ nodePool:
   labels:
   taints:
     - key: experiment-name
-      value: all-default
+      value: ""
       effect: NoSchedule
   requirements:
     - key: kubernetes.io/arch
