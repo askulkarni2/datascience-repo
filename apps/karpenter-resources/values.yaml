@@ -1,9 +1,9 @@
 # Shared values
 name: ""
+experimentSize: "large"
 
 # EC2NodeClass specific values
 ec2NodeClass:
-  amiFamily: AL2
   subnetSelectorTerms:
   - tags:
       karpenter.sh/discovery: "scalex-cluster"

@@ -67,18 +67,26 @@ spec:
       spec:
         containers:
         - name: ray-worker
+          {{- if eq .Values.experimentSize "gpu-large" }}
+          image: rayproject/ray-ml:2.9.0
+          {{- else }}
           image: rayproject/ray:2.9.0
+          {{- end }}
           lifecycle:
             preStop:
               exec:
                 command: ["/bin/sh","-c","ray stop"]
           resources:
+          {{- if eq .Values.experimentSize "gpu-large" }}
+            limits:
+              cpu: "10"
+              memory: "46G"
+              nvidia.com/gpu: 4
+          {{- else }}
             limits:
               cpu: "1"
               memory: "1G"
-            requests:
-              cpu: "1"
-              memory: "1G"
+          {{- end }}
           volumeMounts:
             - name: persistent-storage
               mountPath: /data
@@ -87,6 +95,11 @@ spec:
           operator: "Equal"
           value: {{ .Values.namespace }}
           effect: "NoSchedule"
+        {{- if eq .Values.experimentSize "gpu-large" }}
+        - key: nvidia.com/gpu
+          operator: "Exists"
+          effect: NoSchedule
+        {{- end }}
         volumes:
           - name: persistent-storage
             persistentVolumeClaim:
