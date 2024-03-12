@@ -35,7 +35,7 @@ jupyterhub:
     cpu:
       guarantee: 0.1
     memory:
-      guarantee: 128Mi
+      guarantee: 128M
     nodeSelector:
         NodePool: ""
     storage:
