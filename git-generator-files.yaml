@@ -32,11 +32,6 @@ spec:
           helm:
             valuesObject:
               name: '{{.path.basename}}'
-              nodePool:
-                taints:
-                  - key: experiment-name
-                    value: '{{.path.basename}}'
-                    effect: NoSchedule
         - repoURL: https://github.com/askulkarni2/datascience-repo
           targetRevision: HEAD
           path: "apps/ray-cluster"
