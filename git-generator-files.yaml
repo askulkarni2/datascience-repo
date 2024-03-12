@@ -14,7 +14,7 @@ spec:
       - path: "experiments/**/config.yaml"
   template:
     metadata:
-      name: '{{.path.basename}}-apps'
+      name: '{{.path.basename}}'
     spec:
       project: default
       sources:
