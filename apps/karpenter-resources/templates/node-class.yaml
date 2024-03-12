@@ -1,15 +1,9 @@
-{{- if .Values.ec2NodeClass.enabled }}
 apiVersion: karpenter.k8s.aws/v1beta1
 kind: EC2NodeClass
 metadata:
   name: {{ .Values.name }}
 spec:
-  {{- if .Values.ec2NodeClass.amiFamily }}
   amiFamily: {{ .Values.ec2NodeClass.amiFamily }}
-  {{- else if .Values.ec2NodeClass.amiSelectorTerms }}
-  amiSelectorTerms:
-    {{- toYaml .Values.ec2NodeClass.amiSelectorTerms | nindent 4 }}
-  {{- end }}
   {{- with .Values.ec2NodeClass.subnetSelectorTerms }}
   subnetSelectorTerms:
     {{- toYaml . | nindent 4 }}
@@ -33,12 +27,3 @@ spec:
         volumeType: {{ .Values.ec2NodeClass.blockDevice.volumeType }}
         encrypted: {{ .Values.ec2NodeClass.blockDevice.encrypted }}
         deleteOnTermination: {{ .Values.ec2NodeClass.blockDevice.deleteOnTermination }}
-  detailedMonitoring: {{ .Values.ec2NodeClass.detailedMonitoring }}
-  {{- if .Values.ec2NodeClass.instanceStorePolicy }}
-  instanceStorePolicy: {{ .Values.ec2NodeClass.instanceStorePolicy }}
-  {{- end }}
-  {{- if .Values.ec2NodeClass.userData }}
-  userData: |
-    {{- .Values.ec2NodeClass.userData | nindent 4 }}
-  {{- end }}
-{{- end }}

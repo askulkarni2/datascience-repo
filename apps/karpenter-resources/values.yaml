@@ -3,9 +3,7 @@ name: ""
 
 # EC2NodeClass specific values
 ec2NodeClass:
-  enabled: true
   amiFamily: AL2
-  amiSelectorTerms:
   subnetSelectorTerms:
   - tags:
       karpenter.sh/discovery: "scalex-cluster"
@@ -24,14 +22,10 @@ ec2NodeClass:
     volumeType: gp3
     encrypted: true
     deleteOnTermination: true
-  detailedMonitoring: true
-  userData:
-  instanceStorePolicy:
+
 
 # NodePool specific values
 nodePool:
-  enabled: true
-  labels:
   taints:
     - key: experiment-name
       value: ""
