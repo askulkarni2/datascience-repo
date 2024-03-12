@@ -32,12 +32,14 @@ spec:
           helm:
             valuesObject:
               name: '{{.path.basename}}'
+              experimentSize: '{{.experiment_size}}'
         - repoURL: https://github.com/askulkarni2/datascience-repo
           targetRevision: HEAD
           path: "apps/ray-cluster"
           helm:
             valuesObject:
               namespace: '{{.path.basename}}'
+              experiment_site: '{{.experiment_size}}'
         - repoURL: https://github.com/askulkarni2/datascience-repo
           targetRevision: HEAD
           path: "apps/jupyterhub"
