@@ -81,12 +81,12 @@ jupyterhub:
 #          operator: "Equal"
 #          value: ""
 #          effect: "NoSchedule"
-#    userPods:
-#      tolerations:
-#        - key: "experiment-name"
-#          operator: "Equal"
-#          value: ""
-#          effect: "NoSchedule"
+    userPods:
+      tolerations:
+        - key: "experiment-name"
+          operator: "Equal"
+          value: ""
+          effect: "NoSchedule"
 
   prePuller:
     hook:
