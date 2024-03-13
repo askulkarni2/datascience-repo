@@ -79,6 +79,9 @@ jupyterhub:
   prePuller:
     hook:
       enabled: false
+    continuous:
+      enabled: false
+    pullProfileListImages: false
 
   cull:
     enabled: false
