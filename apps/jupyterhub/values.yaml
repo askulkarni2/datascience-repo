@@ -30,7 +30,7 @@ jupyterhub:
   singleuser:
     startTimeout: 1200
     image:
-      name: docker pull jupyter/base-notebook
+      name: jupyter/base-notebook
       tag: python-3.8.13
     cpu:
       guarantee: 0.5
