@@ -50,14 +50,15 @@ jupyterhub:
         readOnly: false
     serviceAccountName: ""
     allowPrivilegeEscalation: true
-    extraPodConfig: # This is needed for Jovyan user running in every single pod, access the Service Account
+    extraPodConfig:
       securityContext:
         fsGroup: 100
-    extraEnv: # Sudo needed to configure the proper permissions to start the notebook instance
+    extraEnv:
       GRANT_SUDO: "yes"
       NOTEBOOK_ARGS: "--allow-root"
       CHOWN_HOME: "yes"
       CHOWN_HOME_OPTS: "-R"
+      RAY_CLUSTER: "raycluster-autoscaler-head-svc"
     uid: 0
     fsGid: 0
     cloudMetadata:
@@ -68,19 +69,6 @@ jupyterhub:
   scheduling:
     userScheduler:
       enabled: false
-#      nodeSelector:
-#        NodePool: ""
-#      tolerations:
-#        - key: "experiment-name"
-#          operator: "Equal"
-#          value: ""
-#          effect: "NoSchedule"
-#    corePods:
-#      tolerations:
-#        - key: "experiment-name"
-#          operator: "Equal"
-#          value: ""
-#          effect: "NoSchedule"
     userPods:
       tolerations:
         - key: "experiment-name"
