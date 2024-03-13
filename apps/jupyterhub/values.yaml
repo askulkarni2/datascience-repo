@@ -67,26 +67,26 @@ jupyterhub:
 
   scheduling:
     userScheduler:
-      enabled: true
-      nodeSelector:
-        NodePool: ""
-      tolerations:
-        - key: "experiment-name"
-          operator: "Equal"
-          value: ""
-          effect: "NoSchedule"
-    corePods:
-      tolerations:
-        - key: "experiment-name"
-          operator: "Equal"
-          value: ""
-          effect: "NoSchedule"
-    userPods:
-      tolerations:
-        - key: "experiment-name"
-          operator: "Equal"
-          value: ""
-          effect: "NoSchedule"
+      enabled: false
+#      nodeSelector:
+#        NodePool: ""
+#      tolerations:
+#        - key: "experiment-name"
+#          operator: "Equal"
+#          value: ""
+#          effect: "NoSchedule"
+#    corePods:
+#      tolerations:
+#        - key: "experiment-name"
+#          operator: "Equal"
+#          value: ""
+#          effect: "NoSchedule"
+#    userPods:
+#      tolerations:
+#        - key: "experiment-name"
+#          operator: "Equal"
+#          value: ""
+#          effect: "NoSchedule"
 
   prePuller:
     hook:

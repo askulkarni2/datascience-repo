@@ -76,27 +76,6 @@ spec:
                       mountPath: /home/data
                       readOnly: false
                   serviceAccountName: '{{.path.basename}}'
-                scheduling:
-                  userScheduler:
-                    nodeSelector:
-                      NodePool: '{{.path.basename}}'
-                    tolerations:
-                      - key: "experiment-name"
-                        operator: "Equal"
-                        value: '{{.path.basename}}'
-                        effect: "NoSchedule"
-                  corePods:
-                    tolerations:
-                      - key: "experiment-name"
-                        operator: "Equal"
-                        value: '{{.path.basename}}'
-                        effect: "NoSchedule"
-                  userPods:
-                    tolerations:
-                      - key: "experiment-name"
-                        operator: "Equal"
-                        value: '{{.path.basename}}'
-                        effect: "NoSchedule"
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{.path.basename}}'
