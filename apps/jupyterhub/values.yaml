@@ -30,8 +30,8 @@ jupyterhub:
   singleuser:
     startTimeout: 1200
     image:
-      name: jupyter/base-notebook
-      tag: python-3.8.13
+      name: quay.io/jupyter/base-notebook
+      tag: latest
     cpu:
       guarantee: 0.5
     memory:

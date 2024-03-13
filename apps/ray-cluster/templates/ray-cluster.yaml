@@ -3,7 +3,7 @@ kind: RayCluster
 metadata:
   name: raycluster-autoscaler
 spec:
-  rayVersion: '2.9.0'
+  rayVersion: '2.9.3'
   enableInTreeAutoscaling: true
   autoscalerOptions:
     upscalingMode: Default
@@ -26,7 +26,7 @@ spec:
       spec:
         containers:
         - name: ray-head
-          image: rayproject/ray:2.9.0
+          image: rayproject/ray:2.9.3.b8d0cb-py311
           ports:
           - containerPort: 6379
             name: gcs
@@ -68,9 +68,9 @@ spec:
         containers:
         - name: ray-worker
           {{- if eq .Values.experimentSize "gpu-large" }}
-          image: rayproject/ray-ml:2.9.0
+          image: rayproject/ray:2.9.3.b8d0cb-py311-gpu
           {{- else }}
-          image: rayproject/ray:2.9.0
+          image: rayproject/ray:2.9.3.b8d0cb-py311
           {{- end }}
           lifecycle:
             preStop:
