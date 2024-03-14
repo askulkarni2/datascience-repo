@@ -46,7 +46,7 @@ jupyterhub:
           claimName: ""
       extraVolumeMounts:
       - name: jupyterhub-shared
-        mountPath: /home/data
+        mountPath: /home/jovyan/data
         readOnly: false
     serviceAccountName: ""
     allowPrivilegeEscalation: true
