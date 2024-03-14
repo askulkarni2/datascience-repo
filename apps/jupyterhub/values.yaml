@@ -50,9 +50,6 @@ jupyterhub:
         readOnly: false
     serviceAccountName: ""
     allowPrivilegeEscalation: true
-    extraPodConfig:
-      securityContext:
-        fsGroup: 100
     extraEnv:
       GRANT_SUDO: "yes"
       NOTEBOOK_ARGS: "--allow-root"
