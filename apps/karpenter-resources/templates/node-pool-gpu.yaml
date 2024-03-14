@@ -9,6 +9,7 @@ spec:
       labels:
         NodePool: {{ .Values.name }}
     spec:
+      amiFamily: AL2023
       nodeClassRef:
         name: {{ .Values.name }}
       taints:
