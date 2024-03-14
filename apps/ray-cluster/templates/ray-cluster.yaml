@@ -67,7 +67,7 @@ spec:
       spec:
         containers:
         - name: ray-worker
-          {{- if eq .Values.experimentSize "gpu-large" }}
+          {{- if eq .Values.experimentSize "gpu-medium" }}
           image: rayproject/ray:2.9.3.b8d0cb-py311-gpu
           {{- else }}
           image: rayproject/ray:2.9.3.b8d0cb-py311
@@ -77,7 +77,7 @@ spec:
               exec:
                 command: ["/bin/sh","-c","ray stop"]
           resources:
-          {{- if eq .Values.experimentSize "gpu-large" }}
+          {{- if eq .Values.experimentSize "gpu-medium" }}
             limits:
               cpu: "7"
               memory: "30G"
@@ -91,14 +91,19 @@ spec:
             - name: persistent-storage
               mountPath: /data
         tolerations:
+        {{- if eq .Values.experimentSize "gpu-medium" }}
+        - key: "experiment-name"
+          operator: "Equal"
+          value: {{ .Values.namespace }}-gpu
+          effect: "NoSchedule"
+        - key: nvidia.com/gpu
+          operator: "Exists"
+          effect: NoSchedule
+        {{- else }}
         - key: "experiment-name"
           operator: "Equal"
           value: {{ .Values.namespace }}
           effect: "NoSchedule"
-        {{- if eq .Values.experimentSize "gpu-large" }}
-        - key: nvidia.com/gpu
-          operator: "Exists"
-          effect: NoSchedule
         {{- end }}
         volumes:
           - name: persistent-storage
