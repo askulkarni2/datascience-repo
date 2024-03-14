@@ -7,16 +7,15 @@ spec:
   template:
     metadata:
       labels:
-        NodePool: {{ .Values.name }}-gpu
+        NodePool: {{ .Values.name }}
     spec:
       nodeClassRef:
         name: {{ .Values.name }}
       taints:
         - key: experiment-name
-          value: {{ .Values.name }}-gpu
+          value: {{ .Values.name }}
           effect: NoSchedule
         - key: nvidia.com/gpu
-          value: "true"
           effect: NoSchedule
       requirements:
         - key: kubernetes.io/arch

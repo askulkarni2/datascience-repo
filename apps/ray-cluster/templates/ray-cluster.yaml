@@ -95,7 +95,7 @@ spec:
         {{- if eq .Values.experimentSize "gpu-medium" }}
         - key: "experiment-name"
           operator: "Equal"
-          value: {{ .Values.namespace }}-gpu
+          value: {{ .Values.namespace }}
           effect: "NoSchedule"
         - key: nvidia.com/gpu
           operator: "Exists"
