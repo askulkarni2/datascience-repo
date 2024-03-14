@@ -79,13 +79,13 @@ spec:
           resources:
           {{- if eq .Values.experimentSize "gpu-large" }}
             limits:
-              cpu: "10"
-              memory: "46G"
-              nvidia.com/gpu: 4
+              cpu: "7"
+              memory: "30G"
+              nvidia.com/gpu: 1
           {{- else }}
             limits:
-              cpu: "1"
-              memory: "1G"
+              cpu: "2"
+              memory: "4G"
           {{- end }}
           volumeMounts:
             - name: persistent-storage
