@@ -71,10 +71,6 @@ spec:
                     - name: jupyterhub-shared
                       persistentVolumeClaim:
                         claimName: '{{.path.basename}}'
-                    extraVolumeMounts:
-                    - name: jupyterhub-shared
-                      mountPath: /home/data
-                      readOnly: false
                   serviceAccountName: '{{.path.basename}}'
                 scheduling:
                   userPods:
