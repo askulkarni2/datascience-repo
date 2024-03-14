@@ -1,9 +1,9 @@
-apiVersion: v1
-kind: ResourceQuota
-metadata:
-  name: {{ .Values.namespace }}
-spec:
-  hard:
-    limits.cpu: "96"
-    limits.memory: 384Gi
-    requests.nvidia.com/gpu: 4
+#apiVersion: v1
+#kind: ResourceQuota
+#metadata:
+#  name: {{ .Values.namespace }}
+#spec:
+#  hard:
+#    limits.cpu: "96"
+#    limits.memory: 384Gi
+#    requests.nvidia.com/gpu: 4
