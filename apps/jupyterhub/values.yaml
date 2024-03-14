@@ -53,8 +53,8 @@ jupyterhub:
     extraEnv:
       GRANT_SUDO: "yes"
       NOTEBOOK_ARGS: "--allow-root"
-      CHOWN_HOME: "yes"
-      CHOWN_HOME_OPTS: "-R"
+#      CHOWN_HOME: "yes"
+#      CHOWN_HOME_OPTS: "-R"
       RAY_CLUSTER: "raycluster-autoscaler-head-svc"
     uid: 0
     fsGid: 0
