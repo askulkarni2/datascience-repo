@@ -8,6 +8,9 @@ spec:
   accessModes:
     - ReadWriteMany # supported options: ReadWriteMany / ReadOnlyMany
   mountOptions:
+    - uid=1000
+    - gid=2000
+    - allow-other
     - allow-delete
     - region us-west-2
   csi:
