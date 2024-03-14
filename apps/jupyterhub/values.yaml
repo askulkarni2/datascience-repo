@@ -31,7 +31,7 @@ jupyterhub:
     startTimeout: 1200
     image:
       name: quay.io/jupyter/base-notebook
-      tag: x86_64-2024-03-11
+      tag: x86_64-2024-02-24
     cpu:
       guarantee: 1
     memory:
