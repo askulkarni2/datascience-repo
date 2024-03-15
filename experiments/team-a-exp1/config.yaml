@@ -1,0 +1,2 @@
+principal_arn: "arn:aws:iam::829527579886:role/data-science-role"
+experiment_size: "medium"
