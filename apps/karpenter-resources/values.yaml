@@ -10,4 +10,4 @@ ec2NodeClass:
   securityGroupSelectorTerms:
   - tags:
       karpenter.sh/discovery: "datascience-cluster"
-  karpenterRole: KarpenterNodeRole-datascience-cluster
+  karpenterRole: eksctl-KarpenterNodeRole-datascience-cluster
