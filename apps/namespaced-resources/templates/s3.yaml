@@ -3,4 +3,4 @@ kind: Bucket
 metadata:
   name: {{ .Values.namespace }}
 spec:
-  name: scalex-demo-{{ .Values.namespace }}-bucket
+  name: datascience-{{ .Values.namespace }}-bucket
