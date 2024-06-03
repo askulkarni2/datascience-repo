@@ -6,8 +6,8 @@ experimentSize: "large"
 ec2NodeClass:
   subnetSelectorTerms:
   - tags:
-      karpenter.sh/discovery: "scalex-cluster"
+      karpenter.sh/discovery: "datascience-cluster"
   securityGroupSelectorTerms:
   - tags:
-      karpenter.sh/discovery: "scalex-cluster"
-  karpenterRole: KarpenterNodeRole-scalex-cluster
+      karpenter.sh/discovery: "datascience-cluster"
+  karpenterRole: KarpenterNodeRole-datascience-cluster
