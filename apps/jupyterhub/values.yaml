@@ -3,7 +3,7 @@ jupyterhub:
     db:
       pvc:
         storage: 50Gi
-        storageClassName: gp2
+        storageClassName: gp3
     nodeSelector:
       NodePool: ""
     tolerations:
@@ -46,7 +46,7 @@ jupyterhub:
           claimName: ""
       extraVolumeMounts:
       - name: jupyterhub-shared
-        mountPath: /home/data
+        mountPath: /home/jovyan/data
         readOnly: false
     serviceAccountName: ""
     allowPrivilegeEscalation: true
