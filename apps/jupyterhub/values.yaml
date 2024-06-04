@@ -3,7 +3,7 @@ jupyterhub:
     db:
       pvc:
         storage: 50Gi
-        storageClassName: gp3
+        storageClassName: gp2
     nodeSelector:
       NodePool: ""
     tolerations:
