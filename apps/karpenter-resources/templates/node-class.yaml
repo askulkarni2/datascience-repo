@@ -3,7 +3,7 @@ kind: EC2NodeClass
 metadata:
   name: {{ .Values.name }}
 spec:
-  amiFamily: AL2
+  amiFamily: Ubuntu
   {{- with .Values.ec2NodeClass.subnetSelectorTerms }}
   subnetSelectorTerms:
     {{- toYaml . | nindent 4 }}
@@ -24,6 +24,6 @@ spec:
     - deviceName: /dev/xvda
       ebs:
         volumeSize: 100Gi
-        volumeType: gp2
+        volumeType: gp3
         encrypted: true
         deleteOnTermination: true
