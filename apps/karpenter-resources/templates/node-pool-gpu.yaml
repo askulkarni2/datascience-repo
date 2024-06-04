@@ -9,7 +9,7 @@ spec:
       labels:
         NodePool: {{ .Values.name }}
     spec:
-      amiFamily: AL2023
+      amiFamily: Ubuntu
       nodeClassRef:
         name: {{ .Values.name }}
       taints:
