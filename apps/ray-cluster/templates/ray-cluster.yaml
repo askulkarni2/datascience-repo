@@ -54,10 +54,10 @@ spec:
           operator: "Equal"
           value: {{ .Values.namespace }}
           effect: "NoSchedule"
-        #volumes:
-        #  - name: persistent-storage
-        #    persistentVolumeClaim:
-        #      claimName: {{ .Values.namespace }}
+        volumes:
+          - name: persistent-storage
+            persistentVolumeClaim:
+              claimName: {{ .Values.namespace }}
   workerGroupSpecs:
   - replicas: 1
     minReplicas: 1
@@ -106,7 +106,7 @@ spec:
           value: {{ .Values.namespace }}
           effect: "NoSchedule"
         {{- end }}
-        #volumes:
-        #  - name: persistent-storage
-        #    persistentVolumeClaim:
-        #      claimName: {{ .Values.namespace }}
+        volumes:
+          - name: persistent-storage
+            persistentVolumeClaim:
+              claimName: {{ .Values.namespace }}
