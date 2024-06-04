@@ -3,7 +3,7 @@ kind: EC2NodeClass
 metadata:
   name: {{ .Values.name }}
 spec:
-  amiFamily: Ubuntu
+  amiFamily: AL2
   {{- with .Values.ec2NodeClass.subnetSelectorTerms }}
   subnetSelectorTerms:
     {{- toYaml . | nindent 4 }}
